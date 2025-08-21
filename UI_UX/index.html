@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UI/UX Portfolio – Charles Ndivo</title>
+    <meta name="description" content="Portfolio of a UI/UX Designer: work, case studies, and contact." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              primary: '#A020F0',
+            },
+            fontFamily: {
+              inter: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+              poppins: ['Poppins', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+            },
+            boxShadow: {
+              glow: '0 0 0 1px rgba(160,32,240,0.2), 0 8px 30px rgba(160,32,240,0.35)',
+            },
+            backgroundImage: {
+              'hero-gradient': 'radial-gradient(1200px 600px at 80% -10%, rgba(160,32,240,0.25), transparent 50%), radial-gradient(800px 400px at 10% 20%, rgba(99,102,241,0.15), transparent 50%)',
+            },
+            keyframes: {
+              float: {
+                '0%, 100%': { transform: 'translateY(0px)' },
+                '50%': { transform: 'translateY(-10px)' },
+              },
+              fadeUp: {
+                '0%': { opacity: 0, transform: 'translateY(16px)' },
+                '100%': { opacity: 1, transform: 'translateY(0)' },
+              },
+              blob: {
+                '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                '33%': { transform: 'translate(20px, -30px) scale(1.05)' },
+                '66%': { transform: 'translate(-20px, 10px) scale(0.95)' },
+                '100%': { transform: 'translate(0px, 0px) scale(1)' },
+              },
+            },
+            animation: {
+              float: 'float 6s ease-in-out infinite',
+              fadeUp: 'fadeUp 700ms ease forwards',
+              blob: 'blob 12s ease-in-out infinite',
+            },
+          },
+        },
+      };
+    </script>
+    <link rel="stylesheet" href="./assets/css/styles.css" />
+  </head>
+  <body class="font-inter antialiased bg-white text-gray-900 dark:bg-gray-950 dark:text-gray-100 selection:bg-primary/20 selection:text-primary">
+    <!-- Preloader -->
+    <div id="preloader" class="fixed inset-0 z-[9999] grid place-items-center bg-white/80 dark:bg-gray-950/80 backdrop-blur-sm">
+      <div class="relative h-14 w-14">
+        <div class="absolute inset-0 rounded-full border-4 border-primary/30 border-t-primary animate-spin"></div>
+        <div class="absolute inset-2 rounded-full border-4 border-primary/20 border-b-primary animate-spin [animation-duration:1.2s]"></div>
+      </div>
+    </div>
+
+    <!-- Custom Cursor -->
+    <div id="cursor" class="pointer-events-none fixed z-[9998] size-5 rounded-full border border-primary/60 bg-primary/20 shadow-glow hidden md:block"></div>
+    <div id="cursor-trail" class="pointer-events-none fixed z-[9997] size-16 -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/10 blur-2xl hidden md:block"></div>
+
+    <!-- Navbar -->
+    <header class="sticky top-0 z-50">
+      <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 backdrop-blur supports-[backdrop-filter]:bg-white/60 dark:supports-[backdrop-filter]:bg-gray-900/50 border-b border-white/30 dark:border-white/10">
+        <a href="#home" class="flex items-center gap-2">
+          <div class="size-8 rounded-lg bg-gradient-to-tr from-primary/80 to-purple-400/70"></div>
+          <span class="text-sm font-semibold tracking-wide">Charles Ndivo</span>
+        </a>
+        <nav class="hidden items-center gap-6 md:flex">
+          <a href="#about" class="nav-link">About</a>
+          <a href="#services" class="nav-link">Services</a>
+          <a href="#skills" class="nav-link">Skills</a>
+          <a href="#portfolio" class="nav-link">Portfolio</a>
+          <a href="#testimonials" class="nav-link">Testimonials</a>
+          <a href="#contact" class="nav-link">Contact</a>
+        </nav>
+        <div class="flex items-center gap-2">
+          <a href="./assets/cv/Charles_Ndivo_CV.pdf" download class="hidden md:inline-flex btn-primary">Download CV</a>
+          <button id="themeToggle" class="rounded-full border border-white/30 dark:border-white/10 bg-white/40 dark:bg-gray-800/40 p-2 shadow-sm transition hover:shadow-glow" aria-label="Toggle dark mode">
+            <svg class="size-5 text-gray-700 dark:hidden" viewBox="0 0 24 24" fill="currentColor"><path d="M12 18a6 6 0 1 0 0-12 6 6 0 0 0 0 12Z"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <svg class="hidden size-5 text-gray-200 dark:block" viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg>
+          </button>
+          <button id="mobileMenuBtn" class="md:hidden rounded-full border border-white/30 dark:border-white/10 bg-white/40 dark:bg-gray-800/40 p-2">
+            <svg class="size-5" viewBox="0 0 24 24" fill="currentColor"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+          </button>
+        </div>
+      </div>
+      <div id="mobileMenu" class="md:hidden hidden border-b border-white/30 dark:border-white/10 bg-white/70 dark:bg-gray-900/60 backdrop-blur">
+        <nav class="mx-auto max-w-7xl px-4 py-3 grid gap-2">
+          <a href="#about" class="mobile-link">About</a>
+          <a href="#services" class="mobile-link">Services</a>
+          <a href="#skills" class="mobile-link">Skills</a>
+          <a href="#portfolio" class="mobile-link">Portfolio</a>
+          <a href="#testimonials" class="mobile-link">Testimonials</a>
+          <a href="#contact" class="mobile-link">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <section id="home" class="relative overflow-hidden bg-hero-gradient">
+      <div class="pointer-events-none absolute inset-0 -z-10">
+        <div class="absolute -left-24 -top-24 size-72 rounded-full bg-primary/30 blur-3xl animate-blob"></div>
+        <div class="absolute right-10 top-20 size-80 rounded-full bg-purple-400/20 blur-3xl animate-blob [animation-delay:2s]"></div>
+        <div class="absolute -bottom-24 left-1/3 size-72 rounded-full bg-primary/20 blur-3xl animate-blob [animation-delay:4s]"></div>
+        <div class="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-primary/20 to-transparent"></div>
+      </div>
+      <div class="mx-auto grid min-h-[90vh] max-w-7xl place-items-center px-4 py-24">
+        <div class="relative z-10 w-full">
+          <div class="grid items-center gap-10 lg:grid-cols-2">
+            <div class="text-left max-w-xl">
+              <h1 class="mt-4 text-4xl font-extrabold leading-tight sm:text-5xl md:text-6xl">
+                <span class="block">CREATIVE UI/UX DESIGNER</span>
+                <span class="block">TURNING IDEAS INTO</span>
+                <span class="block">DIGITAL MAGIC</span>
+              </h1>
+              <div class="mt-8 flex flex-wrap items-center gap-3">
+                <a href="#portfolio" class="btn-accent">Explore Now</a>
+                <a href="./assets/cv/Charles_Ndivo_CV.pdf" download class="btn-primary">Download CV</a>
+              </div>
+            </div>
+            <div class="hidden lg:flex flex-col items-end gap-6">
+              <div class="text-right">
+                <div class="text-sm font-semibold tracking-wide text-primary">FOLLOW US:</div>
+                <div class="mt-2 flex items-center justify-end gap-3">
+                  <a href="#" class="social-btn" aria-label="Facebook"><svg viewBox="0 0 24 24" class="size-4" fill="currentColor"><path d="M13 3h4a1 1 0 0 1 1 1v3h-3a2 2 0 0 0-2 2v3h4l-1 4h-3v7h-4v-7H7v-4h3V9a6 6 0 0 1 6-6Z"/></svg></a>
+                  <a href="#" class="social-btn" aria-label="Twitter"><svg viewBox="0 0 24 24" class="size-4" fill="currentColor"><path d="M22 5.8c-.7.3-1.4.5-2.2.6.8-.5 1.3-1.1 1.6-2-.7.5-1.6.8-2.5 1-1.4-1.5-3.8-1.6-5.3-.2-1 .9-1.5 2.3-1.2 3.6-3.2-.2-6.1-1.7-8.1-4.1-1.1 1.9-.5 4.3 1.3 5.5-.6 0-1.1-.2-1.6-.4 0 2.1 1.5 4 3.6 4.4-.4.1-.9.2-1.3.1.4 1.7 2 3 3.8 3-1.7 1.3-3.8 2-5.9 2-.4 0-.8 0-1.2-.1 2.2 1.4 4.7 2.1 7.2 2.1 8.7 0 13.5-7.4 13.2-14 0-.1 0-.2 0-.3.9-.6 1.6-1.3 2.2-2.2Z"/></svg></a>
+                  <a href="#" class="social-btn" aria-label="LinkedIn"><svg viewBox="0 0 24 24" class="size-4" fill="currentColor"><path d="M4.98 3.5C4.98 4.61 4.09 5.5 2.98 5.5 1.87 5.5.98 4.61.98 3.5.98 2.39 1.87 1.5 2.98 1.5c1.11 0 2 .89 2 2ZM.5 8.5h5v15h-5v-15Zm7.5 0h4.8v2.05h.07c.67-1.27 2.3-2.6 4.74-2.6 5.07 0 6 3.34 6 7.69v7.86h-5v-6.97c0-1.66-.03-3.79-2.31-3.79-2.31 0-2.67 1.8-2.67 3.67v7.09h-5v-15Z"/></svg></a>
+                  <a href="https://www.instagram.com/_.klaustudio?igsh=YXh5bm1heGFlMGFi" target="_blank" class="social-btn" aria-label="Instagram"><svg viewBox="0 0 24 24" class="size-4" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+                </div>
+              </div>
+              <div class="mx-auto h-[520px] w-[420px] md:h-[420px] md:w-[360px] rounded-[2rem] glass overflow-hidden">
+                <img src="./assets/images/profile.jpg" alt="Charles Ndivo portrait" class="h-full w-full object-cover" />
+              </div>
+              <div class="grid grid-cols-2 gap-10 text-right">
+                <div>
+                  <div class="text-4xl font-extrabold text-primary"><span class="counter" data-target="4">0</span>+</div>
+                  <div class="mt-1 text-xs uppercase tracking-wide text-gray-600 dark:text-gray-400">Year Experience</div>
+                </div>
+                <div>
+                  <div class="text-4xl font-extrabold text-primary"><span class="counter" data-target="100">0</span>+</div>
+                  <div class="mt-1 text-xs uppercase tracking-wide text-gray-600 dark:text-gray-400">Projects Finished</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="section">
+      <div class="container">
+        <div class="grid items-center gap-10 md:grid-cols-[280px,1fr]">
+          <div class="relative mx-auto size-56 rounded-3xl bg-gradient-to-tr from-primary/30 to-purple-400/30 p-1">
+            <div class="glass h-full w-full rounded-2xl overflow-hidden">
+              <img src="./assets/images/profile.jpg" alt="Charles Ndivo portrait" class="h-full w-full object-cover" loading="lazy" />
+            </div>
+          </div>
+          <div class="text-center md:text-left">
+            <h2 class="section-title">About Me</h2>
+            <p class="mt-3 text-gray-600 dark:text-gray-300">I’m a product-focused designer who blends aesthetics with usability. I translate complex problems into elegant, accessible solutions and collaborate closely with engineering to ship delightful experiences.</p>
+            <!-- Stats Row -->
+            <div class="mt-8 grid grid-cols-3 gap-4 text-center">
+              <div class="enhanced-card p-4">
+                <div class="text-2xl font-extrabold text-primary">4+</div>
+                <div class="mt-1 text-xs tracking-wide text-gray-600 dark:text-gray-400">Years of Expertise</div>
+              </div>
+              <div class="enhanced-card p-4">
+                <div class="text-2xl font-extrabold text-primary">100+</div>
+                <div class="mt-1 text-xs tracking-wide text-gray-600 dark:text-gray-400">Projects Completed</div>
+              </div>
+              <div class="enhanced-card p-4">
+                <div class="text-2xl font-extrabold text-primary">70%</div>
+                <div class="mt-1 text-xs tracking-wide text-gray-600 dark:text-gray-400">Boosted Conversion</div>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="section">
+      <div class="container">
+        <h2 class="section-title">Services</h2>
+        <p class="mt-2 text-center text-gray-600 dark:text-gray-300">What I can do for you</p>
+        <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div class="enhanced-card shine-hover hover-glow p-6 text-center animate-pop-in">
+            <div class="mx-auto mb-3 grid size-12 place-items-center rounded-xl bg-primary/15 text-primary">
+              <svg viewBox="0 0 24 24" class="size-5" fill="currentColor"><path d="M3 5h18v4H3V5Zm0 6h18v8H3v-8Zm2 2v4h14v-4H5Z"/></svg>
+            </div>
+            <h3 class="font-semibold">Product Design</h3>
+            <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">From idea to polished UI with user‑centric flows.</p>
+          </div>
+          <div class="enhanced-card shine-hover hover-glow p-6 text-center animate-pop-in [animation-delay:120ms]">
+            <div class="mx-auto mb-3 grid size-12 place-items-center rounded-xl bg-primary/15 text-primary">
+              <svg viewBox="0 0 24 24" class="size-5" fill="currentColor"><path d="M12 2 1 7l11 5 9-4.09V17h2V7L12 2Zm0 9L1 6v11h11V11Z"/></svg>
+            </div>
+            <h3 class="font-semibold">Wireframes & Prototypes</h3>
+            <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">Rapid prototyping to validate and iterate fast.</p>
+          </div>
+          <div class="enhanced-card shine-hover hover-glow p-6 text-center animate-pop-in [animation-delay:240ms]">
+            <div class="mx-auto mb-3 grid size-12 place-items-center rounded-xl bg-primary/15 text-primary">
+              <svg viewBox="0 0 24 24" class="size-5" fill="currentColor"><path d="M4 4h16v4H4V4Zm0 6h16v10H4V10Zm2 2v6h12v-6H6Z"/></svg>
+            </div>
+            <h3 class="font-semibold">Design Systems</h3>
+            <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">Scalable components, tokens, and documentation.</p>
+          </div>
+          <div class="enhanced-card shine-hover hover-glow p-6 text-center animate-pop-in [animation-delay:360ms]">
+            <div class="mx-auto mb-3 grid size-12 place-items-center rounded-xl bg-primary/15 text-primary">
+              <svg viewBox="0 0 24 24" class="size-5" fill="currentColor"><path d="M7 4h10v2H7V4Zm-3 4h16v2H4V8Zm3 4h10v2H7v-2Zm-3 4h16v2H4v-2Z"/></svg>
+            </div>
+            <h3 class="font-semibold">UX Research</h3>
+            <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">Interviews, usability tests, and analytics insights.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills" class="section">
+      <div class="container">
+        <h2 class="section-title">Skills</h2>
+        <div class="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <div class="skill-card">
+            <div class="skill-icon bg-[#F24E1E]/20 text-[#F24E1E]">F</div>
+            <div class="skill-title">Figma</div>
+            <p class="skill-desc">Auto‑layout, components, prototyping, handoff.</p>
+          </div>
+          <div class="skill-card">
+            <div class="skill-icon bg-[#FF61F6]/20 text-[#FF61F6]">Xd</div>
+            <div class="skill-title">Adobe XD</div>
+            <p class="skill-desc">Wireframes to interactive prototypes.</p>
+          </div>
+          <div class="skill-card">
+            <div class="skill-icon bg-[#31A8FF]/20 text-[#31A8FF]">Ps</div>
+            <div class="skill-title">Photoshop</div>
+            <p class="skill-desc">Visual design, assets, retouching.</p>
+          </div>
+          <div class="skill-card">
+            <div class="skill-icon bg-[#FF9A00]/20 text-[#FF9A00]">Ai</div>
+            <div class="skill-title">Illustrator</div>
+            <p class="skill-desc">Icons, vectors, brand assets.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Portfolio -->
+    <section id="portfolio" class="section">
+      <div class="container">
+        <div class="text-center">
+          <h2 class="section-title">Portfolio</h2>
+          <div class="mt-1 text-sm text-gray-500 dark:text-gray-400">Click a mockup to see details</div>
+        </div>
+        <div class="mt-6 tabs">
+          <button class="tab active" data-filter="all">All</button>
+          <button class="tab" data-filter="web">Web</button>
+          <button class="tab" data-filter="mobile">Mobile</button>
+          <button class="tab" data-filter="more-designs">More Designs</button>
+        </div>
+        <div class="mt-8 grid gap-8 sm:grid-cols-1 lg:grid-cols-2" id="portfolioGrid">
+          <div class="portfolio-item" data-category="web">
+            <div class="mockup-container">
+              <img src="./assets/images/web/My courses.jpg" alt="My Courses Mockup" class="portfolio-mockup" data-title="My Courses" data-tags="Web, UI" data-description="Course platform UI redesign mockups with modern design principles and improved user experience." />
+            </div>
+            <div class="portfolio-info">
+              <h3 class="portfolio-title">My Courses</h3>
+              <p class="portfolio-tags">Web, UI</p>
+              <p class="portfolio-description">Course platform UI redesign mockups with modern design principles and improved user experience.</p>
+            </div>
+          </div>
+          
+          <div class="portfolio-item" data-category="web">
+            <div class="mockup-container">
+              <img src="./assets/images/web/dashboard.jpg" alt="Dashboard Mockup" class="portfolio-mockup" data-title="Dashboard" data-tags="Web, Analytics" data-description="Comprehensive dashboard design with data visualization and user-friendly interface." />
+            </div>
+            <div class="portfolio-info">
+              <h3 class="portfolio-title">Dashboard</h3>
+              <p class="portfolio-tags">Web, Analytics</p>
+              <p class="portfolio-description">Comprehensive dashboard design with data visualization and user-friendly interface.</p>
+            </div>
+          </div>
+          
+          <div class="portfolio-item" data-category="web">
+            <div class="mockup-container">
+              <img src="./assets/images/web/My tasks.jpg" alt="My Tasks Mockup" class="portfolio-mockup" data-title="My Tasks" data-tags="Web, Task Management" data-description="Task management application with intuitive workflow and productivity features." />
+            </div>
+            <div class="portfolio-info">
+              <h3 class="portfolio-title">My Tasks</h3>
+              <p class="portfolio-tags">Web, Task Management</p>
+              <p class="portfolio-description">Task management application with intuitive workflow and productivity features.</p>
+            </div>
+          </div>
+          
+          <div class="portfolio-item" data-category="web">
+            <div class="mockup-container">
+              <img src="./assets/images/web/Create Account.jpg" alt="Create Account Mockup" class="portfolio-mockup" data-title="Create Account" data-tags="Web, Onboarding" data-description="User registration flow with streamlined form design and validation." />
+            </div>
+            <div class="portfolio-info">
+              <h3 class="portfolio-title">Create Account</h3>
+              <p class="portfolio-tags">Web, Onboarding</p>
+              <p class="portfolio-description">User registration flow with streamlined form design and validation.</p>
+            </div>
+          </div>
+          
+          <!-- Additional Web Designs (Hidden initially) -->
+          <div class="portfolio-item hidden-more" data-category="web">
+            <div class="mockup-container">
+              <img src="./assets/images/web/Shoe shop.png" alt="Shoe Shop Web Design" class="portfolio-mockup" data-title="Shoe Shop Website" data-tags="Web, E-commerce" data-description="Modern shoe shop e-commerce website with product catalog, shopping cart, and secure checkout system." />
+            </div>
+            <div class="portfolio-info">
+              <h3 class="portfolio-title">Shoe Shop Website</h3>
+              <p class="portfolio-tags">Web, E-commerce</p>
+              <p class="portfolio-description">Modern shoe shop e-commerce website with product catalog, shopping cart, and secure checkout system.</p>
+            </div>
+          </div>
+          
+          <div class="portfolio-item hidden-more" data-category="web">
+            <div class="mockup-container">
+              <img src="./assets/images/web/Commerce.png" alt="Commerce Web Design" class="portfolio-mockup" data-title="Commerce Platform" data-tags="Web, E-commerce" data-description="Comprehensive e-commerce platform with advanced features, inventory management, and multi-vendor support." />
+            </div>
+            <div class="portfolio-info">
+              <h3 class="portfolio-title">Commerce Platform</h3>
+              <p class="portfolio-tags">Web, E-commerce</p>
+              <p class="portfolio-description">Comprehensive e-commerce platform with advanced features, inventory management, and multi-vendor support.</p>
+            </div>
+          </div>
+          
+          <div class="portfolio-item hidden-more" data-category="web">
+            <div class="mockup-container">
+              <img src="./assets/images/web/Web App.png" alt="Web Application Design" class="portfolio-mockup" data-title="Web Application" data-tags="Web, Application" data-description="Modern web application with responsive design, user authentication, and interactive features for optimal user experience." />
+            </div>
+            <div class="portfolio-info">
+              <h3 class="portfolio-title">Web Application</h3>
+              <p class="portfolio-tags">Web, Application</p>
+              <p class="portfolio-description">Modern web application with responsive design, user authentication, and interactive features for optimal user experience.</p>
+            </div>
+          </div>
+          
+          <!-- More Additional Web Designs -->
+          <div class="portfolio-item hidden-more" data-category="web">
+            <div class="mockup-container">
+              <img src="./assets/images/web/Marketing.png" alt="Marketing Web Design" class="portfolio-mockup" data-title="Marketing Website" data-tags="Web, Marketing" data-description="Professional marketing website with lead generation, analytics tracking, and conversion optimization features." />
+            </div>
+            <div class="portfolio-info">
+              <h3 class="portfolio-title">Marketing Website</h3>
+              <p class="portfolio-tags">Web, Marketing</p>
+              <p class="portfolio-description">Professional marketing website with lead generation, analytics tracking, and conversion optimization features.</p>
+            </div>
+          </div>
+          
+          <div class="portfolio-item hidden-more" data-category="web">
+            <div class="mockup-container">
+              <img src="./assets/images/web/Ui.png" alt="UI Design" class="portfolio-mockup" data-title="UI Design System" data-tags="Web, UI Design" data-description="Comprehensive UI design system with consistent components, typography, and visual hierarchy for modern web applications." />
+            </div>
+            <div class="portfolio-info">
+              <h3 class="portfolio-title">UI Design System</h3>
+              <p class="portfolio-tags">Web, UI Design</p>
+              <p class="portfolio-description">Comprehensive UI design system with consistent components, typography, and visual hierarchy for modern web applications.</p>
+            </div>
+          </div>
+          
+          <div class="portfolio-item hidden-more" data-category="web">
+            <div class="mockup-container">
+              <img src="./assets/images/web/Wedding ui.png" alt="Wedding UI Design" class="portfolio-mockup" data-title="Wedding Website" data-tags="Web, Wedding" data-description="Elegant wedding website with RSVP functionality, event details, and beautiful visual design for special occasions." />
+            </div>
+            <div class="portfolio-info">
+              <h3 class="portfolio-title">Wedding Website</h3>
+              <p class="portfolio-tags">Web, Wedding</p>
+              <p class="portfolio-description">Elegant wedding website with RSVP functionality, event details, and beautiful visual design for special occasions.</p>
+            </div>
+          </div>
+          
+          <!-- Mobile Design Mockups -->
+          <div class="portfolio-item" data-category="mobile">
+            <div class="mockup-container">
+              <img src="./assets/images/mobile/Product Detail.png" alt="Product Detail Mobile App" class="portfolio-mockup" data-title="Product Detail App" data-tags="Mobile, E-commerce" data-description="Detailed product showcase mobile application with high-quality images and comprehensive product information." />
+            </div>
+            <div class="portfolio-info">
+              <h3 class="portfolio-title">Product Detail App</h3>
+              <p class="portfolio-tags">Mobile, E-commerce</p>
+              <p class="portfolio-description">Detailed product showcase mobile application with high-quality images and comprehensive product information.</p>
+            </div>
+          </div>
+          
+          <div class="portfolio-item" data-category="mobile">
+            <div class="mockup-container">
+              <img src="./assets/images/mobile/Market.png" alt="Market Mobile App" class="portfolio-mockup" data-title="Market App" data-tags="Mobile, Marketplace" data-description="Digital marketplace mobile application connecting buyers and sellers with seamless transaction experience." />
+            </div>
+            <div class="portfolio-info">
+              <h3 class="portfolio-title">Market App</h3>
+              <p class="portfolio-tags">Mobile, Marketplace</p>
+              <p class="portfolio-description">Digital marketplace mobile application connecting buyers and sellers with seamless transaction experience.</p>
+            </div>
+          </div>
+          
+          <div class="portfolio-item" data-category="mobile">
+            <div class="mockup-container">
+              <img src="./assets/images/mobile/Learning Module.png" alt="Learning Module Mobile App" class="portfolio-mockup" data-title="Learning Module App" data-tags="Mobile, Education" data-description="Interactive learning platform mobile app with engaging educational content and progress tracking." />
+            </div>
+            <div class="portfolio-info">
+              <h3 class="portfolio-title">Learning Module App</h3>
+              <p class="portfolio-tags">Mobile, Education</p>
+              <p class="portfolio-description">Interactive learning platform mobile app with engaging educational content and progress tracking.</p>
+            </div>
+          </div>
+          
+          <div class="portfolio-item" data-category="mobile">
+            <div class="mockup-container">
+              <img src="./assets/images/mobile/Feed.png" alt="Feed Mobile App" class="portfolio-mockup" data-title="Social Feed App" data-tags="Mobile, Social" data-description="Social media feed mobile application with dynamic content sharing and community engagement features." />
+            </div>
+            <div class="portfolio-info">
+              <h3 class="portfolio-title">Social Feed App</h3>
+              <p class="portfolio-tags">Mobile, Social</p>
+              <p class="portfolio-description">Social media feed mobile application with dynamic content sharing and community engagement features.</p>
+            </div>
+          </div>
+          
+          <!-- Additional Mobile Designs (Hidden initially) -->
+          <div class="portfolio-item hidden-more" data-category="mobile">
+            <div class="mockup-container">
+              <img src="./assets/images/mobile/Phone Verified.png" alt="Phone Verified Mobile App" class="portfolio-mockup" data-title="Phone Verification App" data-tags="Mobile, Security" data-description="Phone verification mobile application with secure authentication and user verification process." />
+            </div>
+            <div class="portfolio-info">
+              <h3 class="portfolio-title">Phone Verification App</h3>
+              <p class="portfolio-tags">Mobile, Security</p>
+              <p class="portfolio-description">Phone verification mobile application with secure authentication and user verification process.</p>
+            </div>
+          </div>
+          
+          <div class="portfolio-item hidden-more" data-category="mobile">
+            <div class="mockup-container">
+              <img src="./assets/images/mobile/Ex Phon.png" alt="Exchange Phone Mobile App" class="portfolio-mockup" data-title="Exchange Phone App" data-tags="Mobile, Communication" data-description="Phone exchange mobile application for seamless communication and contact management." />
+            </div>
+            <div class="portfolio-info">
+              <h3 class="portfolio-title">Exchange Phone App</h3>
+              <p class="portfolio-tags">Mobile, Communication</p>
+              <p class="portfolio-description">Phone exchange mobile application for seamless communication and contact management.</p>
+            </div>
+          </div>
+          
+          <div class="portfolio-item hidden-more" data-category="mobile">
+            <div class="mockup-container">
+              <img src="./assets/images/mobile/Check Email.png" alt="Check Email Mobile App" class="portfolio-mockup" data-title="Email Checker App" data-tags="Mobile, Communication" data-description="Email verification mobile application with inbox management and notification features." />
+            </div>
+            <div class="portfolio-info">
+              <h3 class="portfolio-title">Email Checker App</h3>
+              <p class="portfolio-tags">Mobile, Communication</p>
+              <p class="portfolio-description">Email verification mobile application with inbox management and notification features.</p>
+            </div>
+          </div>
+          
+          <div class="portfolio-item hidden-more" data-category="mobile">
+            <div class="mockup-container">
+              <img src="./assets/images/mobile/Forgot password.png" alt="Forgot Password Mobile App" class="portfolio-mockup" data-title="Password Recovery App" data-tags="Mobile, Security" data-description="Password recovery mobile application with secure reset process and user authentication." />
+            </div>
+            <div class="portfolio-info">
+              <h3 class="portfolio-title">Password Recovery App</h3>
+              <p class="portfolio-tags">Mobile, Security</p>
+              <p class="portfolio-description">Password recovery mobile application with secure reset process and user authentication.</p>
+            </div>
+          </div>
+          
+          <div class="portfolio-item hidden-more" data-category="mobile">
+            <div class="mockup-container">
+              <img src="./assets/images/mobile/Create password.png" alt="Create Password Mobile App" class="portfolio-mockup" data-title="Password Creator App" data-tags="Mobile, Security" data-description="Password creation mobile application with strength validation and security guidelines." />
+            </div>
+            <div class="portfolio-info">
+              <h3 class="portfolio-title">Password Creator App</h3>
+              <p class="portfolio-tags">Mobile, Security</p>
+              <p class="portfolio-description">Password creation mobile application with strength validation and security guidelines.</p>
+            </div>
+          </div>
+          
+          <div class="portfolio-item hidden-more" data-category="mobile">
+            <div class="mockup-container">
+              <img src="./assets/images/mobile/Chats.png" alt="Chats Mobile App" class="portfolio-mockup" data-title="Chat Application" data-tags="Mobile, Communication" data-description="Real-time chat mobile application with messaging, file sharing, and group conversation features." />
+            </div>
+            <div class="portfolio-info">
+              <h3 class="portfolio-title">Chat Application</h3>
+              <p class="portfolio-tags">Mobile, Communication</p>
+              <p class="portfolio-description">Real-time chat mobile application with messaging, file sharing, and group conversation features.</p>
+            </div>
+          </div>
+          
+          <div class="portfolio-item hidden-more" data-category="mobile">
+            <div class="mockup-container">
+              <img src="./assets/images/mobile/Discover.png" alt="Discover Mobile App" class="portfolio-mockup" data-title="Discovery App" data-tags="Mobile, Exploration" data-description="Content discovery mobile application with personalized recommendations and exploration features." />
+            </div>
+            <div class="portfolio-info">
+              <h3 class="portfolio-title">Discovery App</h3>
+              <p class="portfolio-tags">Mobile, Exploration</p>
+              <p class="portfolio-description">Content discovery mobile application with personalized recommendations and exploration features.</p>
+            </div>
+          </div>
+          
+          <!-- Additional iPad Designs -->
+          <div class="portfolio-item hidden-more" data-category="mobile">
+            <div class="mockup-container">
+              <img src="./assets/images/mobile/Ipad.png" alt="iPad App Design" class="portfolio-mockup" data-title="iPad Application" data-tags="Mobile, Tablet" data-description="Optimized iPad application with touch-friendly interface, split-screen support, and enhanced user experience for tablet users." />
+            </div>
+            <div class="portfolio-info">
+              <h3 class="portfolio-title">iPad Application</h3>
+              <p class="portfolio-tags">Mobile, Tablet</p>
+              <p class="portfolio-description">Optimized iPad application with touch-friendly interface, split-screen support, and enhanced user experience for tablet users.</p>
+            </div>
+          </div>
+          
+          <div class="portfolio-item hidden-more" data-category="mobile">
+            <div class="mockup-container">
+              <img src="./assets/images/mobile/Ipad 2.png" alt="iPad App Design 2" class="portfolio-mockup" data-title="iPad Application 2" data-tags="Mobile, Tablet" data-description="Advanced iPad application with multi-touch gestures, Apple Pencil support, and professional-grade features for creative professionals." />
+            </div>
+            <div class="portfolio-info">
+              <h3 class="portfolio-title">iPad Application 2</h3>
+              <p class="portfolio-tags">Mobile, Tablet</p>
+              <p class="portfolio-description">Advanced iPad application with multi-touch gestures, Apple Pencil support, and professional-grade features for creative professionals.</p>
+            </div>
+          </div>
+          
+          <!-- More Designs Portfolio Item -->
+          <div class="portfolio-item" data-category="more-designs">
+            <div class="mockup-container more-designs-container">
+              <img src="./assets/images/port/port.jpg" alt="More Designs Portfolio" class="portfolio-mockup" data-title="More Designs" data-tags="Portfolio, Additional Work" data-description="Explore additional design work and projects in my comprehensive portfolio." />
+              <div class="hover-overlay">
+                <div class="hover-content">
+                  <h3>Take me to the other designs</h3>
+                  <p>Click to explore more of my work</p>
+                </div>
+              </div>
+            </div>
+            <div class="portfolio-info">
+              <h3 class="portfolio-title">More Designs</h3>
+              <p class="portfolio-tags">Portfolio, Additional Work</p>
+              <p class="portfolio-description">Explore additional design work and projects in my comprehensive portfolio. Click the image above to visit my extended portfolio showcasing more UI/UX designs, mobile apps, and web projects.</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- See All Button - Only shown when there are more than 4 items in a category -->
+        <div class="mt-12 text-center hidden" id="seeAllContainer">
+          <button id="seeAllBtn" class="btn-accent see-all-btn">
+            <span class="see-all-text">See All Projects</span>
+            <svg class="see-all-icon" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M7 10l5 5 5-5"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="section">
+      <div class="container">
+        <h2 class="section-title">Testimonials</h2>
+        <div class="mt-8">
+          <div class="relative overflow-hidden rounded-2xl glass">
+            <div id="carousel" class="flex transition-transform duration-700">
+              <figure class="carousel-item testimonial-card shine-hover hover-glow animate-pop-in">
+                <div class="mb-3 flex items-center justify-center gap-1 text-primary">
+                  <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                </div>
+                <blockquote>“A rare blend of craft and strategy. Our users noticed the difference.”</blockquote>
+                <figcaption>— Product Lead, CommerceCo</figcaption>
+              </figure>
+              <figure class="carousel-item testimonial-card shine-hover hover-glow animate-pop-in [animation-delay:120ms]">
+                <div class="mb-3 flex items-center justify-center gap-1 text-primary">
+                  <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                </div>
+                <blockquote>“Delivered a world‑class design system that scaled with our team.”</blockquote>
+                <figcaption>— Design Manager, Finlytics</figcaption>
+              </figure>
+              <figure class="carousel-item testimonial-card shine-hover hover-glow animate-pop-in [animation-delay:240ms]">
+                <div class="mb-3 flex items-center justify-center gap-1 text-primary">
+                  <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                </div>
+                <blockquote>“Went above and beyond in research and prototyping. Highly recommended.”</blockquote>
+                <figcaption>— Founder, Travelogue</figcaption>
+              </figure>
+            </div>
+            <div class="absolute inset-x-0 bottom-3 flex justify-center gap-2">
+              <button class="dot" data-index="0"></button>
+              <button class="dot" data-index="1"></button>
+              <button class="dot" data-index="2"></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Work Experience List (Dark) -->
+    <section id="experience" class="py-16 bg-gray-900 text-gray-100">
+      <div class="container">
+        <h2 class="section-title">Work Experience</h2>
+        <div class="mt-10 grid gap-6">
+          <div class="glass rounded-2xl p-5 flex flex-wrap items-center justify-between gap-4 bg-white/5">
+            <div>
+              <div class="font-semibold uppercase">UI/UX Designer — Mdadda (2025—Present)</div>
+              <p class="mt-1 text-sm text-gray-300">Leading design strategy to deliver impactful digital experiences.</p>
+            </div>
+            <a href="#portfolio" class="btn-ghost">Explore Now →</a>
+          </div>
+          <div class="glass rounded-2xl p-5 flex flex-wrap items-center justify-between gap-4 bg-white/5">
+            <div>
+              <div class="font-semibold uppercase">UI/UX Designer — Freelance</div>
+              <p class="mt-1 text-sm text-gray-300">Client‑facing design sprints, research, wireframes and prototypes.</p>
+            </div>
+            <a href="#portfolio" class="btn-ghost">Explore Now →</a>
+          </div>
+          
+        </div>
+      </div>
+    </section>
+
+    
+    <!-- Contact -->
+    <section id="contact" class="section">
+      <div class="container">
+        <h2 class="section-title">Contact</h2>
+        <div class="grid gap-6 md:grid-cols-[1fr,1fr.2] mt-8">
+          <div class="card contact-card shine-hover hover-glow animate-pop-in">
+            <form id="contactForm" class="grid gap-5 sm:grid-cols-2 text-center">
+          <div class="form-field">
+            <input type="text" id="name" required class="peer" />
+            <label for="name">Name</label>
+          </div>
+          <div class="form-field">
+            <input type="email" id="email" required class="peer" />
+            <label for="email">Email</label>
+          </div>
+          <div class="form-field sm:col-span-2">
+            <input type="text" id="subject" required class="peer" />
+            <label for="subject">Subject</label>
+          </div>
+          <div class="form-field sm:col-span-2">
+            <textarea id="message" rows="5" required class="peer"></textarea>
+            <label for="message">Message</label>
+          </div>
+          <div class="sm:col-span-2">
+            <button id="sendBtn" type="submit" class="btn-primary inline-flex items-center gap-2">
+              <span class="send-label">Send Message</span>
+              <svg class="size-4" viewBox="0 0 24 24" fill="currentColor"><path d="M3.4 20.4 22 12 3.4 3.6 3 10l12 2-12 2 .4 6.4Z"/></svg>
+            </button>
+          </div>
+            </form>
+          </div>
+          <div class="enhanced-card shine-hover hover-glow p-6">
+            <h3 class="font-semibold">Let’s get in touch</h3>
+            <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">Reach out for collaborations or just a friendly hello 👋</p>
+            <ul class="mt-4 grid gap-3 text-sm">
+              <li class="glass rounded-xl px-4 py-3"><strong>Email:</strong> klauscreativesworld@gmail.com</li>
+              <li class="glass rounded-xl px-4 py-3"><strong>Phone:</strong> +254 718819228</li>
+              <li class="glass rounded-xl px-4 py-3"><strong>Location:</strong> Nairobi, Kenya</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="mt-20 bg-gray-900 text-gray-100">
+      <div class="container grid gap-8 py-12 md:grid-cols-4">
+        <div>
+          <div class="flex items-center gap-2">
+            <div class="size-8 rounded-lg bg-gradient-to-tr from-primary/80 to-purple-400/70"></div>
+            <span class="text-lg font-bold">Charles Ndivo</span>
+          </div>
+          <p class="mt-3 text-sm text-gray-300">Designer crafting intuitive, elegant digital experiences.</p>
+        </div>
+        <div>
+          <h3 class="font-semibold">Menu</h3>
+          <ul class="mt-3 grid gap-2 text-sm">
+            <li><a href="#home" class="hover:text-primary">Home</a></li>
+            <li><a href="#about" class="hover:text-primary">About</a></li>
+            <li><a href="#services" class="hover:text-primary">Services</a></li>
+            <li><a href="#testimonials" class="hover:text-primary">Testimonials</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-semibold">Support</h3>
+          <ul class="mt-3 grid gap-2 text-sm">
+            <li><a href="#contact" class="hover:text-primary">Contact</a></li>
+            <li><a href="#" class="hover:text-primary">FAQs</a></li>
+            <li><a href="#portfolio" class="hover:text-primary">Portfolio</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-semibold">Follow</h3>
+          <div class="mt-3 flex items-center gap-3">
+            <a class="social-btn" href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" class="size-4" fill="currentColor"><path d="M13 3h4a1 1 0 0 1 1 1v3h-3a2 2 0 0 0-2 2v3h4l-1 4h-3v7h-4v-7H7v-4h3V9a6 6 0 0 1 6-6Z"/></svg></a>
+            <a class="social-btn" href="#" aria-label="Twitter"><svg viewBox="0 0 24 24" class="size-4" fill="currentColor"><path d="M22 5.8c-.7.3-1.4.5-2.2.6.8-.5 1.3-1.1 1.6-2-.7.5-1.6.8-2.5 1-1.4-1.5-3.8-1.6-5.3-.2-1 .9-1.5 2.3-1.2 3.6-3.2-.2-6.1-1.7-8.1-4.1-1.1 1.9-.5 4.3 1.3 5.5-.6 0-1.1-.2-1.6-.4 0 2.1 1.5 4 3.6 4.4-.4.1-.9.2-1.3.1.4 1.7 2 3 3.8 3-1.7 1.3-3.8 2-5.9 2-.4 0-.8 0-1.2-.1 2.2 1.4 4.7 2.1 7.2 2.1 8.7 0 13.5-7.4 13.2-14 0-.1 0-.2 0-.3.9-.6 1.6-1.3 2.2-2.2Z"/></svg></a>
+            <a class="social-btn" href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" class="size-4" fill="currentColor"><path d="M4.98 3.5C4.98 4.61 4.09 5.5 2.98 5.5 1.87 5.5.98 4.61.98 3.5.98 2.39 1.87 1.5 2.98 1.5c1.11 0 2 .89 2 2ZM.5 8.5h5v15h-5v-15Zm7.5 0h4.8v2.05h.07c.67-1.27 2.3-2.6 4.74-2.6 5.07 0 6 3.34 6 7.69v7.86h-5v-6.97c0-1.66-.03-3.79-2.31-3.79-2.31 0-2.67 1.8-2.67 3.67v7.09h-5v-15Z"/></svg></a>
+            <a class="social-btn" href="https://www.instagram.com/_.klaustudio?igsh=YXh5bm1heGFlMGFi" target="_blank" aria-label="Instagram"><svg viewBox="0 0 24 24" class="size-4" fill="currentColor"><path d="M12 2a10 10 0 1 0 .001 20.001A10 10 0 0 0 12 2Zm6.32 6.25a7.9 7.9 0 0 1 1.41 4.47c-1.06-.21-2.85-.43-4.82-.23-.09-.22-.17-.43-.27-.65-.2-.47-.41-.92-.64-1.35 2.59-1.06 3.89-2.62 4.32-2.24ZM12 4.1c1.82 0 3.49.62 4.81 1.66-.35.41-1.51 1.6-3.91 2.5-1.04-1.91-2.26-3.52-2.85-4.24.61-.13 1.25-.2 1.95-.2Zm-3.86 1.3c.48.57 1.74 2.12 2.88 4.1-3.4.9-6.55.88-7.38.85a7.93 7.93 0 0 1 4.5-4.95ZM4.08 12c0-.08 0-.16.01-.24.85.02 4.69.05 8.21-.98.2.39.39.79.56 1.2-.2.06-.41.12-.62.19-3.3 1.06-5.26 3.2-6.36 4.8A7.88 7.88 0 0 1 4.08 12Zm7.92 7.9c-1.76 0-3.37-.58-4.66-1.56 1.01-1.62 2.84-3.98 5.86-5 1.65-.6 3.03-.78 4.11-.78.75 0 1.36.07 1.8.14a7.9 7.9 0 0 1-7.11 7.2Zm6.67-3.54c-.53-.1-1.22-.19-2.04-.19-.93 0-2.09.1-3.45.59.34.92.61 1.92.8 2.98a7.93 7.93 0 0 0 4.69-3.38Z"/></svg></a>
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-white/10">
+        <div class="container py-6 text-center text-sm text-gray-300">© <span id="year"></span> Charles Ndivo. All rights reserved.</div>
+      </div>
+    </footer>
+
+    <script src="./assets/js/main.js"></script>
+  </body>
+  </html>
+
